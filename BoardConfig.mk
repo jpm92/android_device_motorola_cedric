@@ -259,6 +259,9 @@ TARGET_USES_MKE2FS := true
 # Wlan
 PRODUCT_VENDOR_MOVE_ENABLED      := true
 
+# VNDK
+BOARD_VNDK_VERSION := current
+
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
 BOARD_HAS_QCOM_WLAN_SDK          := true
