@@ -18,6 +18,9 @@ on init
     chown root diag /sys/kernel/dropbox/data
 
 on post-fs
+    # set RLIMIT_MEMLOCK to 64MB
+    setrlimit 8 67108864 67108864
+
     mkdir /mnt/vendor/persist/camera 0755 oem_5004 oem_5004
     mkdir /mnt/vendor/persist/camera/focus 0775 camera oem_5004
     mkdir /mnt/vendor/persist/camera/ledcal 0775 camera oem_5004
