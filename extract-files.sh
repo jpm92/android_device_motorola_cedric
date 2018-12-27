@@ -23,51 +23,74 @@ VENDOR=motorola
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
+if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+LINEAGE_ROOT="${MY_DIR}"/../../..
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
-if [ ! -f "$HELPER" ]; then
-    echo "Unable to find helper script at $HELPER"
+HELPER="${LINEAGE_ROOT}/vendor/lineage/build/tools/extract_utils.sh"
+if [ ! -f "${HELPER}" ]; then
+    echo "Unable to find helper script at ${HELPER}"
     exit 1
 fi
-. "$HELPER"
+source "${HELPER}"
 
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=true
-
-while [ "$1" != "" ]; do
-    case $1 in
-        -p | --path )           shift
-                                SRC=$1
-                                ;;
-        -s | --section )        shift
-                                SECTION=$1
-                                CLEAN_VENDOR=false
-                                ;;
-        -n | --no-cleanup )     CLEAN_VENDOR=false
-                                ;;
+while [ "${#}" -gt 0 ]; do
+    case "${1}" in
+        -n | --no-cleanup )
+            CLEAN_VENDOR=false
+            ;;
+        -k | --kang )
+                KANG="--kang"
+                ;;
+        -s | --section )
+                SECTION="${2}"; shift
+                CLEAN_VENDOR=false
+                ;;
+        * )
+                SRC="${1}"
+                ;;
     esac
     shift
 done
 
-if [ -z "$SRC" ]; then
-    SRC=adb
+if [ -z "${SRC}" ]; then
+    SRC="adb"
 fi
 
-# Initialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" true "$CLEAN_VENDOR"
+function blob_fixup() {
+    case "${1}" in
 
-extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
-extract "$MY_DIR"/proprietary-files64.txt "$SRC" "$SECTION"
+    # Patch libmmcamera2_stats_modules
+    vendor/lib/libmmcamera2_stats_modules.so)
+        sed -i "s|libgui.so|libfui.so|g" "${2}"
+        sed -i "s|/data/misc/camera|/data/vendor/qcam|g" "${2}"
+        patchelf --remove-needed libandroid.so "${2}"
+        ;;
 
-if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
-    # Reinitialize the helper for device
-    setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false "$CLEAN_VENDOR"
+    vendor/lib64/libmdmcutback.so)
+        patchelf --add-needed libqsap_shim.so "${2}"
+        ;;
 
-    extract "$MY_DIR"/../$DEVICE/proprietary-files.txt "$SRC" "$SECTION"
-    extract "$MY_DIR"/../$DEVICE/proprietary-files64.txt "$SRC" "$SECTION"
-fi
+    vendor/etc/permissions/qcrilhook.xml)
+        sed -i "s|/system/framework/qcrilhook.jar|/vendor/framework/qcrilhook.jar|g" "${2}"
+        ;;
 
-"$MY_DIR"/setup-makefiles.sh
+    vendor/etc/permissions/telephonyservice.xml)
+        sed -i "s|/system/framework/QtiTelephonyServicelibrary.jar|/vendor/framework/QtiTelephonyServicelibrary.jar|g" "${2}"
+        ;;
+
+    vendor/bin/thermal-engine)
+        sed -i "s|/system/etc/thermal|/vendor/etc/thermal|g" "${2}"
+        ;;
+    esac
+}
+
+# Initialize the helper
+setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}" false "${CLEAN_VENDOR}"
+
+extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
+        "${KANG}" --section "${SECTION}"
+
+source "${MY_DIR}/setup-makefiles.sh"

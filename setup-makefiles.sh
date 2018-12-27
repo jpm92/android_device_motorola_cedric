@@ -15,52 +15,41 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+ 
 set -e
 
-# Required!
 DEVICE=cedric
 VENDOR=motorola
 
 INITIAL_COPYRIGHT_YEAR=2017
 
+# Set treble flag
+TREBLE_COMPAT=1
+
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
+if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+LINEAGE_ROOT="${MY_DIR}/../../.."
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
-if [ ! -f "$HELPER" ]; then
-    echo "Unable to find helper script at $HELPER"
+HELPER="${LINEAGE_ROOT}/vendor/lineage/build/tools/extract_utils.sh"
+if [ ! -f "${HELPER}" ]; then
+    echo "Unable to find helper script at ${HELPER}"
     exit 1
 fi
-. "$HELPER"
+source "${HELPER}"
 
-# Initialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" true
+# Initialize the helper for common
+setup_vendor "${DEVICE}" "${VENDOR}" "${LINEAGE_ROOT}"
 
 # Copyright headers and guards
-write_headers "cedric"
+write_headers
 
-# The standard blobs
-write_makefiles "$MY_DIR"/proprietary-files.txt
+# The standard common blobs
+write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
-# We are done!
+cat << EOF >> "$ANDROIDMK"
+EOF
+
+# Finish
 write_footers
-
-if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
-    # Reinitialize the helper for device
-    INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
-    setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false
-
-    # Copyright headers and guards
-    write_headers
-
-    # The standard device blobs
-    write_makefiles "$MY_DIR"/../$DEVICE/proprietary-files.txt
-    write_makefiles "$MY_DIR"/../$DEVICE/proprietary-files64.txt
-
-    # We are done!
-    write_footers
-fi
