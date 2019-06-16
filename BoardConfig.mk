@@ -252,15 +252,10 @@ VENDOR_SECURITY_PATCH := 2018-10-01
 
 # VNDK
 PRODUCT_USE_VNDK_OVERRIDE := false
+BOARD_VNDK_VERSION := current
 
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
-
-# Wlan
-PRODUCT_VENDOR_MOVE_ENABLED      := true
-
-# VNDK
-BOARD_VNDK_VERSION := current
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
@@ -274,3 +269,4 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_P2P          := "p2p"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
+PRODUCT_VENDOR_MOVE_ENABLED      := true
