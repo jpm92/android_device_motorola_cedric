@@ -50,7 +50,6 @@ etc/firmware/emmc_ffu_15_RX1BMB.fw:vendor/firmware/emmc_ffu_15_RX1BMB.fw
 etc/firmware/ice40.bin:vendor/firmware/ice40.bin
 etc/firmware/leia_pfp_470.fw:vendor/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw:vendor/firmware/leia_pm4_470.fw
-etc/firmware/libpn548ad_fw.so:vendor/firmware/libpn548ad_fw.so
 etc/firmware/nvm_tlv.bin:vendor/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin:vendor/firmware/nvm_tlv_1.3.bin
 etc/firmware/nvm_tlv_2.1.bin:vendor/firmware/nvm_tlv_2.1.bin
