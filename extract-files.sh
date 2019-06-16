@@ -83,6 +83,10 @@ function blob_fixup() {
         sed -i "s|/system/etc/thermal|/vendor/etc/thermal|g" "${2}"
         ;;
 
+    vendor/lib64/lib-imsvideocodec.so)
+        patchelf --replace-needed libui.so libui-v27.so "${2}"
+        ;;
+
     esac
 }
 
