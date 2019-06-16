@@ -87,6 +87,14 @@ function blob_fixup() {
         patchelf --replace-needed libui.so libui-v27.so "${2}"
         ;;
 
+    vendor/etc/permissions/qti-vzw-ims-internal.xml)
+        sed -i "s|/system/vendor/framework|/vendor/framework/qti-vzw-ims-internal.xml|g" "${2}"
+        ;;
+
+    vendor/etc/permissions/qcrilhook.xml)
+        sed -i "s|/system/framework/qcrilhook.jar|/vendor/framework/qcrilhook.jar|g" "${2}"
+        ;;
+
     esac
 }
 

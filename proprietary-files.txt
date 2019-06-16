@@ -94,8 +94,8 @@ etc/permissions/embms.xml
 etc/permissions/ims.xml
 etc/permissions/imscm.xml
 etc/permissions/izat.xt.srv.xml
-etc/permissions/qcrilhook.xml
-etc/permissions/qti-vzw-ims-internal.xml
+etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
+etc/permissions/qti-vzw-ims-internal.xml:vendor/etc/permissions/qti-vzw-ims-intenral.xml
 etc/permissions/qti_libpermissions.xml
 etc/permissions/qti_permissions.xml
 -framework/cneapiclient.jar
@@ -111,10 +111,10 @@ framework/com.qualcomm.qti.imscmservice@1.0-java.jar
 -framework/embmslibrary.jar
 -framework/imscmlibrary.jar
 -framework/izat.xt.srv.jar
-framework/qcrilhook.jar
+framework/qcrilhook.jar:vendor/framework/qcrilhook.jar
 -framework/QPerformance.jar
 framework/qti-telephony-common.jar
-framework/QtiTelephonyServicelibrary.jar
+framework/QtiTelephonyServicelibrary.jar:vendor/framework/QtiTelephonyServicelibrary.jar
 -framework/rcsimssettings.jar
 -framework/tcmclient.jar
 -framework/UxPerformance.jar
