@@ -65,7 +65,7 @@ function blob_fixup() {
     # Patch needed libs
     vendor/lib/libmmcamera2_sensor_modules.so)
         sed -i "s|/system/etc/camera|/vendor/etc/camera|g" "${2}"
-        ;:
+        ;;
 
     vendor/bin/adspd)
         patchelf --add-needed libadsp_shim.so "${2}"
