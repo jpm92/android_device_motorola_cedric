@@ -62,28 +62,27 @@ fi
 function blob_fixup() {
     case "${1}" in
 
-    # Patch libmmcamera2_stats_modules
-    vendor/lib/libmmcamera2_stats_modules.so)
-        sed -i "s|libgui.so|libfui.so|g" "${2}"
-        sed -i "s|/data/misc/camera|/data/vendor/qcam|g" "${2}"
-        patchelf --remove-needed libandroid.so "${2}"
+    # Patch needed libs
+    vendor/lib/libmmcamera2_sensor_modules.so)
+        sed -i "s|/system/etc/camera|/vendor/etc/camera|g" "${2}"
+        ;:
+
+    vendor/bin/adspd)
+        patchelf --add-needed libadsp_shim.so "${2}"
         ;;
 
-    vendor/lib64/libmdmcutback.so)
+    vendor/lib/libjustshoot.so)
+        patchelf --add-needed libjustshoot_shim.so "${2}"
+        ;;
+
+    vendor/lib/libmdmcutback.so)
         patchelf --add-needed libqsap_shim.so "${2}"
-        ;;
-
-    vendor/etc/permissions/qcrilhook.xml)
-        sed -i "s|/system/framework/qcrilhook.jar|/vendor/framework/qcrilhook.jar|g" "${2}"
-        ;;
-
-    vendor/etc/permissions/telephonyservice.xml)
-        sed -i "s|/system/framework/QtiTelephonyServicelibrary.jar|/vendor/framework/QtiTelephonyServicelibrary.jar|g" "${2}"
         ;;
 
     vendor/bin/thermal-engine)
         sed -i "s|/system/etc/thermal|/vendor/etc/thermal|g" "${2}"
         ;;
+
     esac
 }
 
