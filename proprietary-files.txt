@@ -10,8 +10,8 @@ bin/ptt_socket_app:vendor/bin/ptt_socket_app
 bin/radish:vendor/bin/radish
 etc/cne/SwimConfig.xml:vendor/etc/cne/SwimConfig.xml
 etc/cne/andsfCne.xml:vendor/etc/cne/andsfCne.xml
-etc/data/dsi_config.xml
-etc/data/netmgr_config.xml
+etc/data/dsi_config.xml:vendor/etc/data/dsi_config.xml
+etc/data/netmgr_config.xml:vendor/etc/data/netmgr_config.xml
 etc/firmware/DE.o.msm8937:vendor/firmware/DE.o.msm8937
 etc/firmware/a225_pfp.fw:vendor/firmware/a225_pfp.fw
 etc/firmware/a225_pm4.fw:vendor/firmware/a225_pm4.fw
@@ -83,7 +83,7 @@ etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat:vendor/etc/wifi/WCNSS_wlan_dic
 etc/init/perfservice.rc
 etc/permissions/ConnectivityExt.xml
 etc/permissions/cneapiclient.xml
-etc/permissions/com.motorola.cameraone.xml
+etc/permissions/com.motorola.cameraone.xml:vendor/etc/permissions/com.motorola.cameraone
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qti.snapdragon.sdk.display.xml
@@ -97,7 +97,7 @@ etc/permissions/izat.xt.srv.xml
 etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
 etc/permissions/qti-vzw-ims-internal.xml:vendor/etc/permissions/qti-vzw-ims-intenral.xml
 etc/permissions/qti_libpermissions.xml
-etc/permissions/qti_permissions.xml
+etc/permissions/qti_permissions.xml:vendor/etc/firmware/qti_permissions.xml
 -framework/cneapiclient.jar
 -framework/com.qti.dpmframework.jar
 -framework/com.qti.location.sdk.jar
@@ -254,7 +254,7 @@ vendor/etc/init/vendor.qti.hardware.qdutils_disp@1.0-service-qti.rc
 vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc
 vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc
 vendor/etc/xtra_root_cert.pem
--vendor/framework/qti-vzw-ims-internal.jar
+-vendor/framework/qti-vzw-ims-internal.jar|8a9f1be184ed7a2a1fb7c4ed120eb31cddf87808
 vendor/framework/vendor.qti.hardware.alarm-V1.0-java.jar
 vendor/lib/com.fingerprints.extension@1.0_vendor.so
 vendor/lib/com.quicinc.cne.api@1.0.so
