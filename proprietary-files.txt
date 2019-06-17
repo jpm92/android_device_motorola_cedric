@@ -138,7 +138,6 @@ lib/libmotimager_utils.so
 lib/libqmimotext.so
 lib/libsdm-disp-apis.so
 lib/libstagefright_soft_flacdec.so
-lib/libuiblur.so
 lib/libzxingcpp.so:vendor/lib/libzxingcpp.so
 -lib/vendor.qti.hardware.fm@1.0.so
 lib/vendor.qti.hardware.qdutils_disp@1.0.so
