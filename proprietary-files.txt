@@ -71,9 +71,9 @@ etc/firmware/sensorhubfw.bin:vendor/firmware/sensorhubfw.bin
 etc/firmware/synaptics-tianma-s3203b-16120901-25d862-cedric.tdat:vendor/firmware/synaptics-tianma-s3203b-16120901-25d862-cedric.tdat
 etc/firmware/upd-00000126-00001001-fed70128-fffe0001-02.tftf:vendor/firmware/upd-00000126-00001001-fed70128-fffe0001-02.tftf
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin:vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_Argentina.bin:vendor/firmware/wlan/primaWCNSS_qcom_wlan_nv_Argentina.bin
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_Argentina.bin:vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv_Argentina.bin
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_Brazil.bin:vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv_Brazil.bin
-etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_India.bin:vendor/firmware/wlan/primaWCNSS_qcom_wlan_nv_India.bin
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_India.bin:vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv_India.bin
 etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat:vendor/firmware/wlan/prima/WCNSS_wlan_dictionary.dat
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin:vendor/etc/wifi/WCNSS_qcom_wlan_nv.bin
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv_Argentina.bin:vendor/etc/wifi/WCNSS_qcom_wlan_nv_Argentina.bin
@@ -83,7 +83,7 @@ etc/firmware/wlan/prima/WCNSS_wlan_dictionary.dat:vendor/etc/wifi/WCNSS_wlan_dic
 etc/init/perfservice.rc
 etc/permissions/ConnectivityExt.xml
 etc/permissions/cneapiclient.xml
-etc/permissions/com.motorola.cameraone.xml:vendor/etc/permissions/com.motorola.cameraone
+etc/permissions/com.motorola.cameraone.xml:vendor/etc/permissions/com.motorola.cameraone.xml
 etc/permissions/com.qti.dpmframework.xml
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qti.snapdragon.sdk.display.xml
@@ -95,9 +95,9 @@ etc/permissions/ims.xml
 etc/permissions/imscm.xml
 etc/permissions/izat.xt.srv.xml
 etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
-etc/permissions/qti-vzw-ims-internal.xml:vendor/etc/permissions/qti-vzw-ims-intenral.xml
+etc/permissions/qti-vzw-ims-internal.xml:vendor/etc/permissions/qti-vzw-ims-internal.xml
 etc/permissions/qti_libpermissions.xml
-etc/permissions/qti_permissions.xml:vendor/etc/firmware/qti_permissions.xml
+etc/permissions/qti_permissions.xml:vendor/etc/permissions/qti_permissions.xml
 -framework/cneapiclient.jar
 -framework/com.qti.dpmframework.jar
 -framework/com.qti.location.sdk.jar
