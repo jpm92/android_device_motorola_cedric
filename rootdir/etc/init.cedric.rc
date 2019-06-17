@@ -25,6 +25,10 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+on init
+    # Suppress Android internal error
+    setprop ro.treble.enabled false
+
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
     swapon_all /system/vendor/etc/fstab.qcom
