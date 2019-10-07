@@ -14,4 +14,5 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/du_cedric.mk
+    $(LOCAL_DIR)/rr_cedric.mk \
+    $(LOCAL_DIR)/rr.mk
