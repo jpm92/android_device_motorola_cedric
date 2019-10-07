@@ -114,9 +114,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     CarrierConfig
 
-# LineageActions
-PRODUCT_PACKAGES += \
-    LineageActions
+# LineageActions | Not necessary for DU
+#PRODUCT_PACKAGES += \
+#    LineageActions
 
 # Display
 PRODUCT_PACKAGES += \
