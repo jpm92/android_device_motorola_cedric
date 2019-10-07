@@ -1,1 +1,1 @@
-add_lunch_combo du_cedric-userdebug
+add_lunch_combo rr_cedric-userdebug
